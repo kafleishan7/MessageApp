@@ -13,9 +13,6 @@ import 'package:ElevateTalk/main.dart' as SignIn;
 
 // import 'package:flushbar/flushbar_helper.dart';
 
-void main() =>
-    runApp(MaterialApp(title: "Personalchat App", home: PersonalchatAPP()));
-
 class PersonalchatAPP extends StatefulWidget {
   @override
   State<PersonalchatAPP> createState() => _PersonalchatAPPState();
@@ -49,32 +46,14 @@ class _PersonalchatAPPState extends State<PersonalchatAPP> {
     print(date);
     print(ShowUsers.toemail);
     var uri = Uri.parse(url);
+
     try {
       var response = await http.post(uri);
       print(response.body);
-
-      listPersonalchat = jsonDecode(response.body);
-
-      listPersonalchat = listPersonalchat.reversed.toList();
-
-      listPersonalchat.add({
-        'Id': "Ikdon",
-        'username': 'Ishan kalfe ',
-        'message': 'Hi ',
-        'email': 'jpg',
-        'verifystatus': 'nothing',
-        'date': ''
-      });
-
-      listPersonalchat = listPersonalchat.reversed.toList();
-      // messagesendcontroller.clear();
+      Fluttertoast.showToast(msg: "Successfully send message");
     } catch (e) {
-      Fluttertoast.showToast(msg: "Network Connection Error.");
+      Fluttertoast.showToast(msg: "Network Message");
     }
-    var response = await http.post(uri);
-
-    // print(response.statusCode);
-    // fetchdata();
   }
 
   var listPersonalchat = [];
@@ -85,31 +64,27 @@ class _PersonalchatAPPState extends State<PersonalchatAPP> {
             SignIn.SignIn.fusername +
             "&toemail=" +
             ShowUsers.toemail;
-
-    // String url = "http://" + ip + "/abledsys/return.php";
     var uri = Uri.parse(url);
+    var response;
     try {
       var response = await http.post(uri);
       listPersonalchat = jsonDecode(response.body);
-
-      listPersonalchat = listPersonalchat.reversed.toList();
-
-      listPersonalchat.add({
-        'Id': "Ikdon",
-        'username': 'Ishan kalfe ',
-        'message': 'Hi ',
-        'email': 'jpg',
-        'verifystatus': 'nothing',
-        'date': ''
-      });
-
-      listPersonalchat = listPersonalchat.reversed.toList();
-      // messagesendcontroller.clear();
     } catch (e) {
-      Fluttertoast.showToast(msg: "Network Connection Error..");
+      Fluttertoast.showToast(msg: "Network Connection Error");
     }
 
-    // new Timer.periodic(oneSecond, (Timer t) => setState(() {}));
+    listPersonalchat = listPersonalchat.reversed.toList();
+
+    listPersonalchat.add({
+      'Id': "Ikdon",
+      'username': 'Ishan kalfe ',
+      'message': 'Hi ',
+      'email': 'jpg',
+      'verifystatus': 'nothing',
+      'date': 'current date'
+    });
+
+    listPersonalchat = listPersonalchat.reversed.toList();
     return listPersonalchat;
   }
 

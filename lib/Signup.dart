@@ -7,8 +7,6 @@ import 'package:http/http.dart' as http;
 import 'Home.dart';
 import 'package:ElevateTalk/main.dart';
 
-void main() => runApp(MaterialApp(
-    debugShowCheckedModeBanner: false, title: "ElevateTalk", home: SignUp()));
 
 class SignUp extends StatefulWidget {
   @override
@@ -79,6 +77,7 @@ class _SignUpState extends State<SignUp> {
     '}',
     ','
   ];
+  final maincolor = Color.fromARGB(255, 5, 135, 210);
 
   TextEditingController fullnamecontroller = TextEditingController();
   TextEditingController emailcontroller = TextEditingController();
@@ -110,22 +109,26 @@ class _SignUpState extends State<SignUp> {
           child: Container(
             width: 100,
             height: 20,
-            color: Color.fromARGB(255, 9, 244, 83),
+            color: Color.fromARGB(255, 227, 227, 227),
             child: Padding(
               padding: EdgeInsets.only(
-                  top: (50), left: (0), right: (0), bottom: (0)),
+                  top: (10), left: (0), right: (0), bottom: (0)),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 5,
-                    width: 10,
-                  ),
                   Icon(
                     Icons.join_inner,
-                    size: 100,
+                    color: maincolor,
+                    size: 70,
+                  ),
+                  Text(
+                    "Sign Up",
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: maincolor,
+                        fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    height: 0,
+                    height: 20,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -212,7 +215,7 @@ class _SignUpState extends State<SignUp> {
                       width: 90,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.red,
+                        color: maincolor,
                       ),
                       child: Center(
                           child: Text(
