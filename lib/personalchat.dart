@@ -8,7 +8,9 @@ import 'package:elegant_notification/elegant_notification.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
-import 'package:ElevateTalk/main.dart' as SignIn;
+import 'package:ElevateTalk/SignIn.dart' as SignIn;
+
+import 'appbar.dart';
 // import 'package:intl/intl.dart';
 
 // import 'package:flushbar/flushbar_helper.dart';
@@ -51,6 +53,7 @@ class _PersonalchatAPPState extends State<PersonalchatAPP> {
       var response = await http.post(uri);
       print(response.body);
       Fluttertoast.showToast(msg: "Successfully send message");
+      messagesendcontroller.clear();
     } catch (e) {
       Fluttertoast.showToast(msg: "Network Message");
     }
@@ -91,27 +94,29 @@ class _PersonalchatAPPState extends State<PersonalchatAPP> {
   int a = 1;
   @override
   Widget build(BuildContext context) {
+    String appusername = '';
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.refresh),
-          onPressed: () {
-            setState(() {});
-          },
-        ),
-        backgroundColor: Color.fromARGB(255, 54, 114, 244),
-        shadowColor: Colors.red,
-        title: const Center(
-          child: Padding(
-              padding: EdgeInsets.only(right: 40),
-              child: Text(
-                "ElevateTalk",
-                style: TextStyle(
-                    background: null, color: Color.fromARGB(255, 255, 225, 0)),
-              )),
-        ),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //     icon: Icon(Icons.refresh),
+      //     onPressed: () {
+      //       setState(() {});
+      //     },
+      //   ),
+      //   backgroundColor: Color.fromARGB(255, 54, 114, 244),
+      //   shadowColor: Colors.red,
+      //   title: const Center(
+      //     child: Padding(
+      //         padding: EdgeInsets.only(right: 40),
+      //         child: Text(
+      //           "ElevateTalk",
+      //           style: TextStyle(
+      //               background: null, color: Color.fromARGB(255, 255, 225, 0)),
+      //         )),
+      //   ),
+      //   centerTitle: true,
+      // ),
+      appBar: appbar('Personalchat'),
       body: FutureBuilder(
           future: fetchdata(),
           builder: (context, snapshot) {
@@ -125,21 +130,8 @@ class _PersonalchatAPPState extends State<PersonalchatAPP> {
                             padding: const EdgeInsets.all(10.0),
                             child: Column(
                               children: [
-                                TextField(
-                                    controller: messagesendcontroller,
-                                    cursorHeight: 4,
-                                    decoration: InputDecoration(
-                                      hintText: 'Enter your age ',
-                                      contentPadding: EdgeInsets.all(5),
-                                      border: OutlineInputBorder(
-                                          borderSide: BorderSide(),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10))),
-                                    ),
-                                    style: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 10, 129, 226),
-                                        fontSize: 20)),
+                                textfieldtheme(
+                                    messagesendcontroller, 'hello', 'hyyy'),
                               ],
                             ));
                       }
@@ -148,33 +140,17 @@ class _PersonalchatAPPState extends State<PersonalchatAPP> {
                               padding: const EdgeInsets.all(10.0),
                               child: Column(
                                 children: [
-                                  TextField(
-                                      controller: messagesendcontroller,
-                                      cursorHeight: 2,
-                                      decoration: InputDecoration(
-                                          hintText: 'Enter your message',
-                                          contentPadding: EdgeInsets.all(5),
-                                          border: OutlineInputBorder(
-                                              borderSide: BorderSide(),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(10))),
-                                          enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(30)))),
-                                      textDirection: TextDirection.ltr,
-                                      style: TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 10, 129, 226),
-                                          fontSize: 20)),
+                                  textfieldtheme(messagesendcontroller, '',
+                                      'Enter your message'),
                                 ],
                               ))
                           : index >= 0
                               ? Container(
+                                  height: 80,
                                   alignment: Alignment.bottomCenter,
                                   margin: const EdgeInsets.all(4),
                                   decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 189, 240, 68),
+                                    color: Color.fromARGB(255, 5, 135, 210),
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
@@ -184,14 +160,15 @@ class _PersonalchatAPPState extends State<PersonalchatAPP> {
                                           children: [
                                             Icon(
                                               Icons.person,
-                                              color: Colors.white,
+                                              color: Color.fromARGB(
+                                                  255, 237, 172, 6),
                                             ),
                                             Text(
                                               " ${listPersonalchat[index]['username']}",
                                               textAlign: TextAlign.justify,
                                               style: TextStyle(
                                                   color: Color.fromARGB(
-                                                      255, 224, 6, 6)),
+                                                      255, 234, 210, 210)),
 
                                               // style: textSytle,
                                             ),
@@ -205,7 +182,9 @@ class _PersonalchatAPPState extends State<PersonalchatAPP> {
                                               listPersonalchat[index]
                                                   ['message'],
                                           style: TextStyle(
-                                              color: Colors.red, fontSize: 15),
+                                              color: Color.fromARGB(
+                                                  255, 215, 243, 7),
+                                              fontSize: 15),
                                           textAlign: TextAlign.left,
                                         ),
                                       ])),

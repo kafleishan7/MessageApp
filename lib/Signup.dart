@@ -1,12 +1,8 @@
-import 'dart:ffi';
-
+import 'package:ElevateTalk/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-
-import 'Home.dart';
-import 'package:ElevateTalk/main.dart';
-
+import 'package:ElevateTalk/SignIn.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -87,20 +83,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     print(fullnamecontroller);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 54, 114, 244),
-        shadowColor: Colors.red,
-        title: Center(
-            child: Padding(
-          padding: EdgeInsets.only(right: 50),
-          child: Text(
-            "ElevateTalk",
-            style: TextStyle(
-                background: null, color: Color.fromARGB(255, 255, 225, 0)),
-          ),
-        )),
-        centerTitle: true,
-      ),
+      appBar: appbar('SignUp'),
       body: Center(
         child: SingleChildScrollView(
             child: Container(
@@ -133,78 +116,26 @@ class _SignUpState extends State<SignUp> {
                   Padding(
                     padding: const EdgeInsets.only(
                         top: (5), left: 40, right: 40, bottom: 1),
-                    child: TextFormField(
-                      controller: fullnamecontroller,
-                      cursorHeight: 4,
-                      style: TextStyle(fontSize: 15),
-                      decoration: InputDecoration(
-                          label: Text(
-                            "Your Name",
-                          ),
-                          contentPadding: EdgeInsets.all(5),
-                          hintText: "Enter your name",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)))),
-                    ),
+                    child: textfieldtheme(
+                        fullnamecontroller, 'Your Name', 'Enter your name'),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
                         top: (20), left: 40, right: 40, bottom: 1),
-                    child: TextFormField(
-                      controller: emailcontroller,
-                      cursorHeight: 4,
-                      style: TextStyle(fontSize: 15),
-                      decoration: InputDecoration(
-                          label: Text(
-                            "Email",
-                          ),
-                          contentPadding: EdgeInsets.all(5),
-                          hintText: "Your Email",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)))),
-                    ),
+                    child:
+                        textfieldtheme(emailcontroller, 'Email', 'Your Email'),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
                         top: (20), left: 40, right: 40, bottom: 1),
-                    child: TextFormField(
-                      controller: phonenumbercontroller,
-                      cursorHeight: 4,
-                      style: TextStyle(fontSize: 15),
-                      decoration: InputDecoration(
-                          label: Text(
-                            "Phonenumber",
-                          ),
-                          contentPadding: EdgeInsets.all(5),
-                          hintText: "Your Phone Number (Optional)",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)))),
-                    ),
+                    child: textfieldtheme(phonenumbercontroller, 'Phone number',
+                        'Enter your phone number'),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
                         top: (20), left: 40, right: 40, bottom: 1),
-                    child: TextFormField(
-                      controller: passwordcontroller,
-                      cursorHeight: 4,
-                      style: TextStyle(fontSize: 15),
-                      decoration: InputDecoration(
-                          label: Text(
-                            "Password",
-                          ),
-                          contentPadding: EdgeInsets.all(5),
-                          hintText: "Your Password",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)))),
-                    ),
+                    child: textfieldtheme(
+                        passwordcontroller, 'Your Password', 'Password'),
                   ),
                   SizedBox(
                     height: 20,

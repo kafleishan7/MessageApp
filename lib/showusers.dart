@@ -6,6 +6,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+void main() => runApp(MaterialApp(
+    debugShowCheckedModeBanner: false, title: "Todo App", home: ShowUsers()));
 
 class ShowUsers extends StatefulWidget {
   ShowUsers({super.key});
@@ -20,8 +22,6 @@ class _ShowUsersState extends State<ShowUsers> {
   fetchdata() async {
     String url =
         "https://elevatetalk.000webhostapp.com/friendstalk/showusers.php";
-
-    // String url = "http://" + ip + "/abledsys/return.php";
     var uri = Uri.parse(url);
 
     try {
@@ -29,8 +29,6 @@ class _ShowUsersState extends State<ShowUsers> {
       listTodo = jsonDecode(response.body);
       listTodo = listTodo.reversed.toList();
       listTodo = listTodo.reversed.toList();
-      // messagesendcontroller.clear();
-      setState(() {});
     } catch (a) {
       Fluttertoast.showToast(msg: "Network Conncection Error");
     }
@@ -46,6 +44,89 @@ class _ShowUsersState extends State<ShowUsers> {
       nimage = imagefilter('assets/12.JPG');
     } else if (email == 'teamelevatewillwin@gmail.com') {
       nimage = imagefilter('assets/icon/icon.jpg');
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
+    } else if (email == 'np05cp4s220042@iic.edu.np') {
+      nimage = imagefilter('assets/icon/ram.PNG');
+      return nimage;
     } else {
       nimage = Icon(
         Icons.person,

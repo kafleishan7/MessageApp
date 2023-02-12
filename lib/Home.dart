@@ -1,13 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:another_flushbar/flushbar.dart';
-import 'package:elegant_notification/elegant_notification.dart';
 import 'package:http/http.dart' as http;
-import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
-import 'package:ElevateTalk/main.dart' as SignIn;
+import 'package:ElevateTalk/SignIn.dart' as SignIn;
 // import 'package:flushbar/flushbar_helper.dart';
 
 void main() => runApp(MaterialApp(title: "Todo App", home: TODOAPP()));
