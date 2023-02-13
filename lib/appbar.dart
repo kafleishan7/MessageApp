@@ -25,9 +25,44 @@ appbar(String pagename) {
   return ishan;
 }
 
-textfieldtheme(
-    TextEditingController controller, String labletext, String hintText) {
+Widget textfieldtheme(TextEditingController controller, String labletext,
+    String hintText, String type) {
+  var obscuretext = false;
+  final sufficicon;
+  int changeicon = 0;
+
+  if (type == 'email') {
+    sufficicon = Icon(
+      Icons.email,
+    );
+  } else if (type == 'name') {
+    sufficicon = Icon(
+      Icons.person_2,
+    );
+  } else if (type == 'number') {
+    sufficicon = Icon(
+      Icons.call,
+    );
+  } else if (type == 'password') {
+    obscuretext = true;
+    sufficicon = InkWell(
+      child: IconButton(
+        icon: Icon(obscuretext ? Icons.visibility_off : Icons.visibility),
+        onPressed: () {
+          setState(() {
+            obscuretext = !obscuretext;
+            print(obscuretext);
+          });
+        },
+      ),
+    );
+    // sufficicon = Icon(Icons.hide_source);
+  } else {
+    sufficicon = Icon(Icons.abc);
+  }
+
   final textfieldtheme = TextFormField(
+    obscureText: obscuretext,
     controller: controller,
     cursorHeight: 4,
     style: TextStyle(fontSize: 15),
@@ -35,6 +70,7 @@ textfieldtheme(
         label: Text(
           labletext,
         ),
+        suffixIcon: sufficicon,
         contentPadding: EdgeInsets.all(5),
         hintText: hintText,
         border: OutlineInputBorder(
@@ -43,4 +79,8 @@ textfieldtheme(
   );
 
   return textfieldtheme;
+}
+
+void setState(Null Function() param0) {
+  setState(() {});
 }

@@ -44,6 +44,7 @@ dependencies:
   auto_reload: ^1.0.0
   intl: ^0.18.0
   flutter_local_notifications: ^13.0.0
+  shared_preferences: ^2.0.17
 
 
 dev_dependencies:

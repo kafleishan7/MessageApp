@@ -5,10 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(MaterialApp(
-    debugShowCheckedModeBanner: false, title: "Todo App", home: ShowUsers()));
-
+// Showuser page for Showing the users who uses My App
 class ShowUsers extends StatefulWidget {
   ShowUsers({super.key});
 
@@ -20,21 +19,26 @@ class ShowUsers extends StatefulWidget {
 class _ShowUsersState extends State<ShowUsers> {
   var listTodo = [];
   fetchdata() async {
+    // Fetching data from database
     String url =
         "https://elevatetalk.000webhostapp.com/friendstalk/showusers.php";
     var uri = Uri.parse(url);
 
     try {
+      //Using post method to fetchdata
       var response = await http.post(uri);
+      //Storing data on list
       listTodo = jsonDecode(response.body);
       listTodo = listTodo.reversed.toList();
       listTodo = listTodo.reversed.toList();
     } catch (a) {
+      //Showing error Toast
       Fluttertoast.showToast(msg: "Network Conncection Error");
     }
     return listTodo;
   }
 
+//THick function to add image
   imageoricon(String email) {
     print(email);
     final nimage;
@@ -137,6 +141,7 @@ class _ShowUsersState extends State<ShowUsers> {
     return nimage;
   }
 
+// Image for a users
   imagefilter(String path) {
     final image;
     try {
@@ -236,7 +241,6 @@ class _ShowUsersState extends State<ShowUsers> {
                                 ]))),
                       );
                     },
-                    // physics: const AlwaysScrollableScrollPhysics(),
                   ),
                   onRefresh: () {
                     return Future.delayed(Duration(seconds: (2).toInt()), () {

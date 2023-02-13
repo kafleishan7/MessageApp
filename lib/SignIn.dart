@@ -2,6 +2,7 @@ import 'package:ElevateTalk/showusers.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Signup.dart';
 import 'appbar.dart';
 
@@ -13,7 +14,6 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   static String signusername = "";
-
   TextEditingController loginemailcontroller = TextEditingController();
   TextEditingController loginpasswordcontroller = TextEditingController();
 
@@ -35,8 +35,11 @@ class _SignInState extends State<SignIn> {
         loginemailcontroller.clear();
         loginpasswordcontroller.clear();
 
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => ShowUsers()));
+         Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => ShowUsers(),
+          ),
+          (route) => false);
       } else {
         Fluttertoast.showToast(msg: "Email or password doesn't match");
       }
@@ -44,6 +47,11 @@ class _SignInState extends State<SignIn> {
       Fluttertoast.showToast(msg: "Network Connection Error");
     }
   }
+
+
+
+  
+  
 
   //
   //Getting Server response into variable.
@@ -63,12 +71,12 @@ class _SignInState extends State<SignIn> {
                 size: 100,
               ),
               textfieldtheme(loginemailcontroller, 'Enter your email',
-                  'Enter your verified email'),
+                  'Enter your verified email', 'email'),
               SizedBox(
                 height: 20,
               ),
-              textfieldtheme(
-                  loginpasswordcontroller, 'Your password', 'Password'),
+              textfieldtheme(loginpasswordcontroller, 'Your password',
+                  'Password', 'password'),
               SizedBox(
                 height: 5,
               ),
@@ -162,6 +170,7 @@ class _SignInState extends State<SignIn> {
       ),
     );
   }
+
 }
 
 Widget _buildforgotpopup(BuildContext context) {

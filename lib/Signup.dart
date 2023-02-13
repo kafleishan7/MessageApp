@@ -43,14 +43,14 @@ class _SignUpState extends State<SignUp> {
     }
 
     if (response.statusCode == 200) {
-      emailcontroller.clear();
-      fullnamecontroller.clear();
-      phonenumbercontroller.clear();
-      passwordcontroller.clear();
-      showDialog(
-        context: context,
-        builder: (BuildContext context) => _buildPopupDialog(context),
-      );
+      // emailcontroller.clear();
+      // fullnamecontroller.clear();
+      // phonenumbercontroller.clear();
+      // passwordcontroller.clear();
+      // showDialog(
+      //   context: context,
+      //   builder: (BuildContext context) => _buildPopupDialog(context),
+      // );
       Fluttertoast.showToast(msg: "Check your email & verified your account");
     }
     print(response.body);
@@ -116,26 +116,26 @@ class _SignUpState extends State<SignUp> {
                   Padding(
                     padding: const EdgeInsets.only(
                         top: (5), left: 40, right: 40, bottom: 1),
-                    child: textfieldtheme(
-                        fullnamecontroller, 'Your Name', 'Enter your name'),
+                    child: textfieldtheme(fullnamecontroller, 'Your Name',
+                        'Enter your name', 'name'),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
                         top: (20), left: 40, right: 40, bottom: 1),
-                    child:
-                        textfieldtheme(emailcontroller, 'Email', 'Your Email'),
+                    child: textfieldtheme(
+                        emailcontroller, 'Email', 'Your Email', 'email'),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
                         top: (20), left: 40, right: 40, bottom: 1),
                     child: textfieldtheme(phonenumbercontroller, 'Phone number',
-                        'Enter your phone number'),
+                        'Enter your phone number', 'number'),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
                         top: (20), left: 40, right: 40, bottom: 1),
-                    child: textfieldtheme(
-                        passwordcontroller, 'Your Password', 'Password'),
+                    child: textfieldtheme(passwordcontroller, 'Your Password',
+                        'Password', 'password'),
                   ),
                   SizedBox(
                     height: 20,
@@ -167,6 +167,7 @@ class _SignUpState extends State<SignUp> {
                       String value = "";
                       String newval = "";
                       int checknumber = 100;
+
                       for (int i = 0; i < name.length; i++) {
                         String value = name[i];
                         for (int j = 0; j < veryfiacation.length; j++) {
@@ -174,9 +175,24 @@ class _SignUpState extends State<SignUp> {
                           if (value == newval || name.length < 5) {
                             checknumber = 200;
                             Fluttertoast.showToast(msg: "User name not valid");
-                            break;
+                            return;
                           }
                         }
+                      }
+                      try {
+                        int number = int.parse(phonenumber);
+                        if (phonenumber.length < 10) {
+                          Fluttertoast.showToast(
+                              msg: "The phone number must have ten digits.");
+                          return;
+                        }
+                      } catch (e) {
+                        Fluttertoast.showToast(
+                            msg: "Please Enter a valid phone number");
+                      }
+                      if (Password.length < 5) {
+                        Fluttertoast.showToast(
+                            msg: "Please enter a strength phone number");
                       }
 
                       if (checknumber != 200) {
@@ -186,6 +202,7 @@ class _SignUpState extends State<SignUp> {
                             Password == "") {
                           Fluttertoast.showToast(
                               msg: "Please fill the all fields");
+                          return;
                         } else {
                           senddatatoserver(name, Email, phonenumber, Password);
                         }

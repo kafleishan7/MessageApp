@@ -130,8 +130,8 @@ class _PersonalchatAPPState extends State<PersonalchatAPP> {
                             padding: const EdgeInsets.all(10.0),
                             child: Column(
                               children: [
-                                textfieldtheme(
-                                    messagesendcontroller, 'hello', 'hyyy'),
+                                textfieldtheme(messagesendcontroller, 'hello',
+                                    'hyyy', 'message'),
                               ],
                             ));
                       }
@@ -141,7 +141,7 @@ class _PersonalchatAPPState extends State<PersonalchatAPP> {
                               child: Column(
                                 children: [
                                   textfieldtheme(messagesendcontroller, '',
-                                      'Enter your message'),
+                                      'Enter your message', 'send'),
                                 ],
                               ))
                           : index >= 0
