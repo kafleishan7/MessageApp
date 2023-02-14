@@ -2,7 +2,12 @@ import 'package:ElevateTalk/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'package:ElevateTalk/SignIn.dart';
+
+import 'Home.dart';
+import 'package:ElevateTalk/main.dart';
+
+void main() => runApp(MaterialApp(
+    debugShowCheckedModeBanner: false, title: "ElevateTalk", home: SignUp()));
 
 class SignUp extends StatefulWidget {
   @override
